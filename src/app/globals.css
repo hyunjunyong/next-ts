@@ -6,7 +6,7 @@ body {
 h1 {
   margin: 0;
   padding: 5px;
-  font-size: 16px;
+  font-size: 32px;
 }
 nav {
   height: 100%;
@@ -26,7 +26,10 @@ ul {
 header {
   height: 10%;
 }
-
+p {
+  padding: 0;
+  margin: 0;
+}
 .main {
   display: flex;
   height: 100%;
@@ -37,12 +40,12 @@ header {
   margin: 0;
 }
 .list li {
-  margin: 0 0 5px 5px;
+  margin: 0 0 10px 10px;
 }
 
 .list li p {
   margin-left: 4px;
-  font-size: 0.5rem;
+  font-size: 1.2rem;
 }
 
 .list button {
@@ -61,6 +64,7 @@ header {
 }
 section {
   margin-bottom: 10px;
+  padding: 10px 20px;
 }
 section div {
   border: 1px solid #d3d3d3;
@@ -70,8 +74,11 @@ section div {
   padding: 3px;
 }
 #fstDiv {
-  height: 100px;
-  padding: 10px 20px;
+  height: 30vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #fstDiv div {
@@ -81,4 +88,19 @@ section div {
 #secDiv {
   display: flex;
   gap: 10px;
+  height: 20vh;
+}
+
+#secDiv div {
+  width: calc(100% / 3 - 10px);
+}
+
+#trdDiv {
+  display: flex;
+  gap: 10px;
+  height: 20vh;
+}
+
+#trdDiv div {
+  width: calc(100% / 3 - 10px);
 }
