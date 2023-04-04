@@ -23,6 +23,13 @@ ul {
   list-style-type: none;
   padding: 0;
 }
+header {
+  height: 10%;
+}
+section {
+  background-color: #d3d3d3;
+}
+
 .main {
   display: flex;
   height: 100%;
@@ -48,6 +55,10 @@ ul {
   align-items: center;
 }
 .child {
-  margin-left: 5px;
   width: 75%;
+}
+
+.bgGray {
+  background-color: #e0e0e0;
+  height: 90%;
 }

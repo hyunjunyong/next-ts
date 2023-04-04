@@ -1,8 +1,8 @@
 "use client";
-import "./page.module.css";
+import "./globals.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
+import { Chart } from "./chart";
 export default function Home() {
   const router = useRouter();
 
@@ -11,15 +11,30 @@ export default function Home() {
   };
 
   return (
-    <main>
-      <div>
-        <button className="" onClick={() => onLogin()}>
-          login
-        </button>
+    <>
+      <header>
+        <div>
+          <button className="" onClick={() => onLogin()}>
+            login
+          </button>
+        </div>
+      </header>
+      <div className="bgGray">
+        <section>
+          <div>123</div>
+        </section>
+        <section>
+          <div>
+            <Chart />
+          </div>
+        </section>
+        <section>
+          <div>123</div>
+        </section>
+        <section>
+          <div>123</div>
+        </section>
       </div>
-      <div>
-        <Link href="/dashboard">link dashboard</Link>
-      </div>
-    </main>
+    </>
   );
 }
