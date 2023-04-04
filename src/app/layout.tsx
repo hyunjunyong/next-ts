@@ -40,7 +40,7 @@ export default function RootLayout({
               <li>
                 <button>
                   <Image src={kanban} alt="kanban" />
-                  <p>KanBan Board</p>
+                  <p>KanBan</p>
                 </button>
               </li>
               <li>

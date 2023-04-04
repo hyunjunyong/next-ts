@@ -20,13 +20,15 @@ export default function Home() {
         </div>
       </header>
       <div className="bgGray">
-        <section>
-          <div>123</div>
-        </section>
-        <section>
+        <section id="fstDiv">
           <div>
             <Chart />
           </div>
+        </section>
+        <section id="secDiv">
+          <div>123</div>
+          <div>123</div>
+          <div>123</div>
         </section>
         <section>
           <div>123</div>
