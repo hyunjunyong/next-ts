@@ -35,8 +35,8 @@ p {
   height: 100%;
 }
 .list img {
-  width: 10px;
-  height: 10px;
+  width: 20px;
+  height: 20px;
   margin: 0;
 }
 .list li {
@@ -66,7 +66,7 @@ section {
   margin-bottom: 10px;
   padding: 10px 20px;
 }
-section div {
+section .card {
   border: 1px solid #d3d3d3;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -75,32 +75,31 @@ section div {
 }
 #fstDiv {
   height: 30vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 #fstDiv div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%;
 }
 
 #secDiv {
   display: flex;
   gap: 10px;
-  height: 20vh;
+  height: 50vh;
 }
 
-#secDiv div {
-  width: calc(100% / 3 - 10px);
+#secDiv .sec_Div {
+  width: calc(100% / 3 - 20px);
+  overflow: auto;
 }
 
-#trdDiv {
-  display: flex;
-  gap: 10px;
-  height: 20vh;
+#secDiv .sec_Div_sec {
+  width: calc(100% / 3 * 2 - 20px);
 }
 
-#trdDiv div {
-  width: calc(100% / 3 - 10px);
+#secDiv .sec_Div_sec .card {
+  margin-bottom: 10px;
+  height: 15vh;
 }

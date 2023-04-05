@@ -54,10 +54,6 @@ export const data = {
   ],
 };
 
-export function App() {
-  return <Line options={options} data={data} />;
-}
-
 export function Chart() {
   return <Line options={options} data={data} />;
 }

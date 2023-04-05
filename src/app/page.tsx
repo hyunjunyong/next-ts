@@ -3,6 +3,7 @@ import "./globals.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Chart } from "./chart";
+import Coin from "./coin-price";
 export default function Home() {
   const router = useRouter();
 
@@ -21,19 +22,23 @@ export default function Home() {
       </header>
       <div className="bgGray">
         <section id="fstDiv">
-          <div>
+          <div className="card">
             <Chart />
           </div>
         </section>
         <section id="secDiv">
-          <div>123</div>
-          <div>456</div>
-          <div>789</div>
-        </section>
-        <section id="trdDiv">
-          <div>123</div>
-          <div>456</div>
-          <div>789</div>
+          <div className="sec_Div card">
+            <div>
+              <Coin />
+            </div>
+          </div>
+          <div className="sec_Div_sec">
+            <div className="card">
+              코인뉴스라도 어디서 가져와야되나 ex :크립토허브 api
+            </div>
+            <div className="card">급상승?</div>
+            <div className="card">789</div>
+          </div>
         </section>
       </div>
     </>
