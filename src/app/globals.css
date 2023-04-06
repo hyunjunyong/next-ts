@@ -92,7 +92,6 @@ section .card {
 
 #secDiv .sec_Div {
   width: calc(100% / 3 - 20px);
-  overflow: auto;
 }
 
 #secDiv .sec_Div_sec {
@@ -100,6 +99,7 @@ section .card {
 }
 
 #secDiv .sec_Div_sec .card {
+  overflow: auto;
   margin-bottom: 10px;
   height: 15vh;
 }

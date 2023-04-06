@@ -8,7 +8,7 @@ import {
 import "./styles.css";
 
 export default function Editor() {
-  const parentStyle = { width: 27, height: 20.5 };
+  const parentStyle = { width: 23.5, height: 22 };
 
   return (
     <EditableBoard
@@ -18,15 +18,15 @@ export default function Editor() {
       backgroundColor={"#F3F0D1"}
     >
       <TextEditorBlock
-        width={16.5}
-        height={7}
+        width={15}
+        height={5.5}
         top={3}
         left={5.5}
         parentStyle={parentStyle}
         unit={"rem"}
-        initialText={"Change Me"}
+        initialText={"이건 react-web-editor입니당"}
         initialFontColor={"#ffffff"}
-        initialFontSize={0.5}
+        initialFontSize={0.3}
         initialFontName={"stix-two-text"}
         initialFontStyle={"twin-color-text"}
       />

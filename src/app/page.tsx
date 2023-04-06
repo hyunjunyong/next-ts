@@ -30,16 +30,16 @@ export default function Home() {
         <section id="secDiv">
           <div className="sec_Div card">
             <div>
-              <Coin />
+              <Editor />
             </div>
           </div>
           <div className="sec_Div_sec">
             <div className="card">
               코인뉴스라도 어디서 가져와야되나 ex :크립토허브 api
             </div>
-            <div className="card">급상승?</div>
+            <div className="card">Apollo graphql</div>
             <div className="card">
-              <Editor />
+              <Coin />
             </div>
           </div>
         </section>
