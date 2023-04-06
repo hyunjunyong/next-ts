@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Chart } from "./chart";
 import Coin from "./coin-price";
+import Editor from "./editor/page";
 export default function Home() {
   const router = useRouter();
 
@@ -37,7 +38,9 @@ export default function Home() {
               코인뉴스라도 어디서 가져와야되나 ex :크립토허브 api
             </div>
             <div className="card">급상승?</div>
-            <div className="card">789</div>
+            <div className="card">
+              <Editor />
+            </div>
           </div>
         </section>
       </div>
