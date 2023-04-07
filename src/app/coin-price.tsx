@@ -65,9 +65,9 @@ const Coin: React.FC = () => {
     <div>
       {KRWData.map((coin, index) => (
         <div key={index}>
-          <h1>{coin.market}</h1>
-          <p>{coin.korean_name}</p>
-          <p>{coin.english_name}</p>
+          <p>
+            {coin.market},{coin.korean_name}
+          </p>
         </div>
       ))}
     </div>

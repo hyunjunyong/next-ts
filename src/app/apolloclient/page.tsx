@@ -4,7 +4,7 @@ import {
   ApolloProvider,
   gql,
 } from "@apollo/client";
-
+import Client from "./client";
 const client = new ApolloClient({
   uri: "https://flyby-router-demo.herokuapp.com/",
   cache: new InMemoryCache(),
@@ -29,8 +29,8 @@ export default function Apollo() {
     .then((result) => console.log(result));
   // eslint-disable-next-line react/no-children-prop
   return (
-    <div>
-      <ApolloProvider client={client} children={undefined} />
-    </div>
+    <ApolloProvider client={client}>
+      <Client />
+    </ApolloProvider>
   );
 }
