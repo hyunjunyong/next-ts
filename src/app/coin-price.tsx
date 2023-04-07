@@ -56,14 +56,14 @@ const Coin: React.FC = () => {
     }
     fetchData();
   }, []);
-
+  const KRWData = data.filter((coin) => coin.market.indexOf("KRW") !== -1);
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
     <div>
-      {data.map((coin, index) => (
+      {KRWData.map((coin, index) => (
         <div key={index}>
           <h1>{coin.market}</h1>
           <p>{coin.korean_name}</p>

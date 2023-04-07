@@ -14,12 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": [
-      "editorjs",
-      "@types/editorjs__header",
-      "@types/editorjs__list",
-      "@types/editorjs__quote"
-    ],
+    "typeRoots": ["./@types", "./node_modules/@types"],
     "plugins": [
       {
         "name": "next"
