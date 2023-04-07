@@ -1,55 +1,52 @@
 "use client";
-import React from "react";
-import {
-  EditableBoard,
-  TextEditorBlock,
-  StyleEditorBlock,
-} from "react-web-editor";
+import React, { useRef, useEffect } from "react";
+import Embed from "@editorjs/embed";
+import Header from "@editorjs/header";
+import List from "@editorjs/list";
+import Link from "@editorjs/link";
+import Raw from "@editorjs/raw";
+import SimpleImage from "@editorjs/simple-image";
+import CheckList from "@editorjs/checklist";
+import editorImage from "@editorjs/image";
+import Quote from "@editorjs/quote";
+import EditorJS from "@editorjs/editorjs";
 import "./styles.css";
 
 export default function Editor() {
-  const parentStyle = { width: 23.5, height: 22 };
+  const editorRef = useRef(null);
+  useEffect(() => {
+    const Editor = new EditorJS({
+      holder: "editorjs",
+      autofocus: true,
+      tools: {
+        header: {
+          class: Header,
+          inlineToolbar: ["link"],
+        },
+        list: {
+          class: List,
+          inlineToolbar: true,
+        },
 
+        embed: Embed,
+        link: Link,
+        raw: Raw,
+        SimpleImage: SimpleImage,
+        checklist: CheckList,
+        image: editorImage,
+        quote: Quote,
+      },
+      // data: {},
+    });
+    return () => {
+      Editor.isReady.then(() => {
+        Editor.destroy();
+      });
+    };
+  }, []);
   return (
-    <EditableBoard
-      unit={"rem"}
-      width={parentStyle.width}
-      height={parentStyle.height}
-      backgroundColor={"#F3F0D1"}
-    >
-      <TextEditorBlock
-        width={15}
-        height={5.5}
-        top={3}
-        left={5.5}
-        parentStyle={parentStyle}
-        unit={"rem"}
-        initialText={"이건 react-web-editor입니당"}
-        initialFontColor={"#ffffff"}
-        initialFontSize={0.3}
-        initialFontName={"stix-two-text"}
-        initialFontStyle={"twin-color-text"}
-      />
-      <StyleEditorBlock
-        width={7}
-        height={7}
-        left={7.2}
-        top={8}
-        unit={"rem"}
-        parentStyle={parentStyle}
-      >
-        <div className="pink circle">Drag</div>
-      </StyleEditorBlock>
-      <StyleEditorBlock
-        width={5.5}
-        height={5.5}
-        left={12.5}
-        top={11}
-        unit={"rem"}
-        parentStyle={parentStyle}
-      >
-        <div className="blue circle">Me</div>
-      </StyleEditorBlock>
-    </EditableBoard>
+    <div>
+      <div id="editorjs" ref={editorRef} />
+    </div>
   );
 }
