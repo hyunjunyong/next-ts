@@ -1,41 +1,18 @@
-// interface PostData {
-//   market: string;
-//   korean_name: string;
-//   english_name: string;
-// }
-
-// export default async function Coin() {
-//   const data = await getData();
-//   if (!data) {
-//     return <div>Loading...</div>;
-//   }
-
-//   return (
-//     <div>
-//       {data.map((coin, index) => (
-//         <div key={index}>
-//           <h1>{coin.market}</h1>
-//           <p>{coin.korean_name}</p>
-//           <p>{coin.english_name}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
-
-// async function getData() {
-//   const res = await fetch("https://api.upbit.com/v1/market/all");
-//   const data = await res.json();
-//   console.log(data);
-//   return data;
-// }
-
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 interface CoinData {
-  market: string;
-  korean_name: string;
-  english_name: string;
+  rank: number;
+  name: string;
+  symbol: string;
+  quotes: {
+    KRW: {
+      price: number;
+      market_cap: number;
+      volume_24h: number;
+      percent_change_24h: number;
+      percent_change_7d: number;
+    };
+  };
 }
 
 const Coin: React.FC = () => {
@@ -45,9 +22,11 @@ const Coin: React.FC = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("https://api.upbit.com/v1/market/all");
+        const res = await fetch(
+          'https://api.coinpaprika.com/v1/tickers?quotes=KRW'
+        );
         const json = await res.json();
-        setData(json);
+        setData(json.slice(0, 100));
       } catch (error) {
         console.error(error);
       } finally {
@@ -56,20 +35,46 @@ const Coin: React.FC = () => {
     }
     fetchData();
   }, []);
-  const KRWData = data.filter((coin) => coin.market.indexOf("KRW") !== -1);
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div>
-      {KRWData.map((coin, index) => (
-        <div key={index}>
-          <p>
-            {coin.market},{coin.korean_name}
-          </p>
-        </div>
-      ))}
+    <div className="coin-table">
+      <table>
+        <thead>
+          <tr>
+            <th>순위</th>
+            <th>종목</th>
+            <th>기호</th>
+            <th>가격(KRW)</th>
+            <th>총 시가</th>
+            <th>거래량(24H)</th>
+            <th>변동(24H)</th>
+            <th>변동(7D)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((coin: CoinData, index: number) => (
+            <tr key={index}>
+              <td>{coin.rank}</td>
+              <td>{coin.name}</td>
+              <td>{coin.symbol}</td>
+              <td>
+                ₩{Number(coin.quotes.KRW.price.toFixed(1)).toLocaleString()}
+              </td>
+              <td>
+                {(coin.quotes.KRW.market_cap / 1000000000000).toFixed(2)}T
+              </td>
+              <td>
+                {(coin.quotes.KRW.volume_24h / 1000000000000).toFixed(2)}T
+              </td>
+              <td>{coin.quotes.KRW.percent_change_24h.toFixed(2)}%</td>
+              <td>{coin.quotes.KRW.percent_change_7d.toFixed(2)}%</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
