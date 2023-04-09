@@ -1,17 +1,22 @@
-import "./globals.css";
-import Image from "next/image";
-import home from "./img/home.png";
-import dashboard from "./img/dashboard.png";
-import chart from "./img/bar-chart.png";
-import kanban from "./img/kanban.png";
-import Settings from "./img/setting.png";
+'use client';
+
+import './globals.css';
+import Image from 'next/image';
+import home from './img/home.png';
+import dashboard from './img/dashboard.png';
+import chart from './img/bar-chart.png';
+import kanban from './img/kanban.png';
+import Settings from './img/setting.png';
+import { useRouter } from 'next/navigation';
 export default function RootLayout({
-  // Layouts must accept a children prop.
-  // This will be populated with nested layouts or pages
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+  const pageRoute = (path: string) => {
+    router.push(path);
+  };
   return (
     <html lang="en">
       <body>
@@ -20,33 +25,36 @@ export default function RootLayout({
             <h1>Admin Page</h1>
             <ul className="list">
               <li>
-                <button>
+                <button className="menuBtn" onClick={() => pageRoute('/')}>
                   <Image src={home} alt="home" />
                   <p>Home</p>
                 </button>
               </li>
               <li>
-                <button>
+                <button className="menuBtn" onClick={() => pageRoute('editor')}>
                   <Image src={dashboard} alt="dashboard" />
-                  <p>DashBoard</p>
+                  <p>editor</p>
                 </button>
               </li>
               <li>
-                <button>
+                <button className="menuBtn">
                   <Image src={chart} alt="chart" />
                   <p>Chart</p>
                 </button>
               </li>
               <li>
-                <button>
+                <button className="menuBtn">
                   <Image src={kanban} alt="kanban" />
                   <p>KanBan</p>
                 </button>
               </li>
               <li>
-                <button>
+                <button
+                  className="menuBtn"
+                  onClick={() => pageRoute('apolloclient')}
+                >
                   <Image src={Settings} alt="Settings" />
-                  <p>Settings</p>
+                  <p>apolloclient</p>
                 </button>
               </li>
             </ul>
