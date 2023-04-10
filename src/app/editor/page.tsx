@@ -17,50 +17,19 @@ export default function Editor() {
   const editorRef = useRef(null);
   const Editor = new EditorJS({
     holder: "editorjs",
-    // autofocus: true,
-    // tools: {
-    //   header: {
-    //     class: Header,
-    //     inlineToolbar: ["link"],
-    //   },
-    //   list: {
-    //     class: List,
-    //     inlineToolbar: true,
-    //   },
+    onReady: () => {
+      console.log("Editor.js가 작동할 준비가 되었습니다!");
+    },
 
-    //   embed: Embed,
-    //   link: Link,
-    //   raw: Raw,
-    //   SimpleImage: SimpleImage,
-    //   checklist: CheckList,
-    //   image: editorImage,
-    //   quote: Quote,
-    // },
-
-    // data: {
-    //   time: 1552744582955,
-    //   blocks: [
-    //     {
-    //       type: "image",
-    //       data: {
-    //         url: "https://cdn.pixabay.com/photo/2017/09/01/21/53/blue-2705642_1280.jpg",
-    //       },
-    //     },
-    //   ],
-    //   version: "2.11.10",
-    // },
+    onChange: (api, event) => {
+      console.log("이제 Editor의 내용이 변경되었음을 알 수 있습니다!", event);
+    },
   });
   const saveData = async () => {
     const data = await Editor.save();
     console.log(data);
   };
-  useEffect(() => {
-    return () => {
-      Editor.isReady.then(() => {
-        Editor.destroy();
-      });
-    };
-  }, []);
+
   return (
     <div className="Editor">
       <h1>editor js입니다.</h1>
