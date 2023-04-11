@@ -12,3 +12,9 @@
   color: white;
   background-color: cornflowerblue;
 }
+
+#editorjs {
+  margin: 0 10px;
+  border: 3px solid snow;
+  border-radius: 5px;
+}

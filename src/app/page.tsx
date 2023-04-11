@@ -29,9 +29,7 @@ export default function Home() {
         </section>
         <section id="secDiv">
           <div className="sec_Div card">
-            <div>
-              <Editor />
-            </div>
+            <Editor />
           </div>
           <div className="sec_Div_sec">
             <div className="card">

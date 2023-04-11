@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React, { useState } from "react";
 import EditorJS from "@editorjs/editorjs";
 import Embed from "@editorjs/embed";
 import Header from "@editorjs/header";
@@ -14,20 +14,33 @@ import Quote from "@editorjs/quote";
 import "./styles.css";
 
 export default function Editor() {
-  const editorRef = useRef(null);
   const Editor = new EditorJS({
     holder: "editorjs",
+    // autofocus: true,
+    tools: {
+      header: Header,
+      image: editorImage,
+      link: Link,
+      raw: Raw,
+
+      list: List,
+      checklist: CheckList,
+      quote: Quote,
+      embed: Embed,
+    },
     onReady: () => {
       console.log("Editor.js가 작동할 준비가 되었습니다!");
     },
 
     onChange: (api, event) => {
-      console.log("이제 Editor의 내용이 변경되었음을 알 수 있습니다!", event);
+      // console.log("이제 Editor의 내용이 변경되었음을 알 수 있습니다!", event);
     },
   });
+  const [data, setData] = useState(null);
   const saveData = async () => {
-    const data = await Editor.save();
-    console.log(data);
+    const res = await Editor.save();
+    setData(res.blocks);
+    console.log(res);
   };
 
   return (
@@ -37,7 +50,8 @@ export default function Editor() {
         <button onClick={saveData} className="Editor-btn">
           저장
         </button>
-        <div id="editorjs" ref={editorRef} />
+        <div id="editorjs" />
+        <div>{data}</div>
       </div>
     </div>
   );
