@@ -1,5 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 import { useQuery, gql } from "@apollo/client";
 
+interface getLocations {
+  id: string;
+  name: string;
+  description: string;
+  photo: string;
+}
 const GET_LOCATIONS = gql`
   query GetLocations {
     locations {

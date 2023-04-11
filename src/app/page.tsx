@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Chart } from "./chart";
 import Coin from "./coin-price";
 import Editor from "./editor/page";
+import Client from "./apolloclient/page";
 export default function Home() {
   const router = useRouter();
 
@@ -35,7 +36,9 @@ export default function Home() {
             <div className="card">
               코인뉴스라도 어디서 가져와야되나 ex :크립토허브 api
             </div>
-            <div className="card">Apollo graphql</div>
+            <div className="card">
+              <Client />
+            </div>
             <div className="card">
               <Coin />
             </div>

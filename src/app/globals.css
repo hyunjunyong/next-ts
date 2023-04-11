@@ -38,12 +38,12 @@ p {
   margin: 0;
 }
 .list li {
-  margin: 0 0 10px 10px;
+  margin: 0 0 20px 20px;
 }
 
 .list li p {
-  margin-left: 4px;
-  font-size: 1.2rem;
+  margin-left: 12px;
+  font-size: 1.4rem;
 }
 
 .list button {
@@ -102,12 +102,7 @@ section .card {
   height: 15vh;
 }
 
-
-.sideBar h1{
-  padding:10px;
-  font-size:32px;
-}
-
-ul li .menuBtn p{
-  margin-left:5px;
+.sideBar h1 {
+  padding: 10px;
+  font-size: 32px;
 }

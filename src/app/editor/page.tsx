@@ -36,11 +36,11 @@ export default function Editor() {
       // console.log("이제 Editor의 내용이 변경되었음을 알 수 있습니다!", event);
     },
   });
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const saveData = async () => {
     const res = await Editor.save();
     setData(res.blocks);
-    console.log(res);
+    console.log(res, data);
   };
 
   return (
@@ -51,7 +51,7 @@ export default function Editor() {
           저장
         </button>
         <div id="editorjs" />
-        <div>{data}</div>
+        {/* <div>{data}</div> */}
       </div>
     </div>
   );

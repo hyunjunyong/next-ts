@@ -25,7 +25,7 @@ export default function Apollo() {
           }
         }
       `,
-    })
+    }) // console.log(result);
     .then((result) => console.log(result));
   // eslint-disable-next-line react/no-children-prop
   return (
