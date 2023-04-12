@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import './globals.css';
-import Image from 'next/image';
-import home from './img/home.png';
-import dashboard from './img/dashboard.png';
-import chart from './img/bar-chart.png';
-import kanban from './img/kanban.png';
-import Settings from './img/setting.png';
-import { useRouter } from 'next/navigation';
+import "./globals.css";
+import Image from "next/image";
+import home from "./img/home.png";
+import dashboard from "./img/dashboard.png";
+import chart from "./img/bar-chart.png";
+import kanban from "./img/kanban.png";
+import Settings from "./img/setting.png";
+import { useRouter } from "next/navigation";
 export default function RootLayout({
   children,
 }: {
@@ -25,33 +25,36 @@ export default function RootLayout({
             <h1>Admin Page</h1>
             <ul className="list">
               <li>
-                <button className="menuBtn" onClick={() => pageRoute('/')}>
+                <button className="menuBtn" onClick={() => pageRoute("/")}>
                   <Image src={home} alt="home" />
                   <p>Home</p>
                 </button>
               </li>
               <li>
-                <button className="menuBtn" onClick={() => pageRoute('editor')}>
+                <button
+                  className="menuBtn"
+                  onClick={() => pageRoute("/editor")}
+                >
                   <Image src={dashboard} alt="dashboard" />
                   <p>editor</p>
                 </button>
               </li>
               <li>
-                <button className="menuBtn">
+                <button className="menuBtn" onClick={() => pageRoute("/chart")}>
                   <Image src={chart} alt="chart" />
                   <p>Chart</p>
                 </button>
               </li>
               <li>
-                <button className="menuBtn">
-                  <Image src={kanban} alt="kanban" />
-                  <p>KanBan</p>
+                <button className="menuBtn" onClick={() => pageRoute("/coin")}>
+                  <Image src={kanban} alt="Coin" />
+                  <p>BitCoin</p>
                 </button>
               </li>
               <li>
                 <button
                   className="menuBtn"
-                  onClick={() => pageRoute('apolloclient')}
+                  onClick={() => pageRoute("/apolloclient")}
                 >
                   <Image src={Settings} alt="Settings" />
                   <p>apolloclient</p>

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -10,24 +12,24 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+client
+  .query({
+    query: gql`
+      query GetLocations {
+        locations {
+          id
+          name
+          description
+          photo
+        }
+      }
+    `,
+  })
+  .then((result) => console.log(result));
+
 export default function Apollo() {
   // const client = ...
 
-  client
-    .query({
-      query: gql`
-        query GetLocations {
-          locations {
-            id
-            name
-            description
-            photo
-          }
-        }
-      `,
-    }) // console.log(result);
-    .then((result) => console.log(result));
-  // eslint-disable-next-line react/no-children-prop
   return (
     <ApolloProvider client={client}>
       <Client />

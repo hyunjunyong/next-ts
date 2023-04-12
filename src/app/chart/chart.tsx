@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Chart as ChartJS,
@@ -54,6 +56,6 @@ export const data = {
   ],
 };
 
-export function Chart() {
+export default function Chart() {
   return <Line options={options} data={data} />;
 }

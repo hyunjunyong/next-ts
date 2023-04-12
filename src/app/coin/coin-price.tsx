@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+"use client";
+import { useState, useEffect } from "react";
 
 interface CoinData {
   rank: number;
@@ -23,7 +24,7 @@ const Coin: React.FC = () => {
     async function fetchData() {
       try {
         const res = await fetch(
-          'https://api.coinpaprika.com/v1/tickers?quotes=KRW'
+          "https://api.coinpaprika.com/v1/tickers?quotes=KRW"
         );
         const json = await res.json();
         setData(json.slice(0, 100));
