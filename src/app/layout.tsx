@@ -8,6 +8,7 @@ import chart from "./img/bar-chart.png";
 import kanban from "./img/kanban.png";
 import Settings from "./img/setting.png";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 export default function RootLayout({
   children,
 }: {
@@ -22,7 +23,9 @@ export default function RootLayout({
       <body>
         <div className="main">
           <nav className="sideBar">
-            <h1>Admin Page</h1>
+            <h1>
+              <Link href="/">Admin Page</Link>
+            </h1>
             <ul className="list">
               <li>
                 <button className="menuBtn" onClick={() => pageRoute("/")}>

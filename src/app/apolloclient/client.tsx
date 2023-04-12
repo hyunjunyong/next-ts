@@ -1,5 +1,27 @@
 import { useQuery, gql } from "@apollo/client";
 
+// 사용해야할 쿼리
+// mutation{
+//   signup(createUserRequest: {email: "hjy4649@naver.com"
+//     password: "1234"
+//     name: "test"
+//     userType: "ADMIN"}){
+//     id
+//     email
+//     name
+//     userType
+//   }
+// }
+
+// query{
+//   getUser(id:1){
+//     id
+//     email
+//     name
+//     userType
+//   }
+// }
+
 interface Location {
   id: string;
   name: string;
@@ -19,7 +41,8 @@ const GET_LOCATIONS = gql`
 `;
 
 export default function Client() {
-  const { loading, error, data } = useQuery(GET_LOCATIONS);
+  const { loading, error, data, refetch, networkStatus } =
+    useQuery(GET_LOCATIONS);
 
   if (loading)
     return (

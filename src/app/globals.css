@@ -106,3 +106,7 @@ section .card {
   padding: 10px;
   font-size: 32px;
 }
+.sideBar h1 a {
+  text-decoration: none;
+  color: white;
+}
