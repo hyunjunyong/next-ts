@@ -2,8 +2,8 @@
 import "./globals.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Chart } from "./chart";
-import Coin from "./coin-price";
+import { Chart } from "./chart/chart";
+import Coin from "./coin/coin-price";
 import Editor from "./editor/page";
 import Client from "./apolloclient/page";
 export default function Home() {
