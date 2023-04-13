@@ -1,3 +1,5 @@
+"use client";
+
 import { useQuery, gql } from "@apollo/client";
 
 // 사용해야할 쿼리

@@ -1,19 +1,22 @@
-import "./login.css";
+"use client";
 
-export default function Login() {
+import Login from "./login";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  gql,
+} from "@apollo/client";
+
+const login = new ApolloClient({
+  uri: "https://moonshot-user-service.fly.dev/graphql",
+  cache: new InMemoryCache(),
+});
+
+export default function Home() {
   return (
-    <div className="login-form">
-      <div className="login-bg">
-        <form>
-          <label htmlFor="email">Email</label>
-          <input type="text" id="email" name="email" />
-
-          <label htmlFor="pw">패스워드</label>
-          <input type="pw" id="pw" name="pw" />
-
-          <button className="login-btn">로그인</button>
-        </form>
-      </div>
-    </div>
+    <ApolloProvider client={login}>
+      <Login />
+    </ApolloProvider>
   );
 }
