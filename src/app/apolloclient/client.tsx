@@ -12,38 +12,29 @@ import { useQuery, gql } from "@apollo/client";
 //     userType
 //   }
 // }
+type UserType = "ADMIN" | "GUEST";
 
-// query{
-//   getUser(id:1){
-//     id
-//     email
-//     name
-//     userType
-//   }
-// }
-
-interface Location {
-  id: string;
+interface User {
+  id: Number;
+  email: string;
   name: string;
-  description: string;
-  photo: string;
+  userType: UserType;
 }
 
-const GET_LOCATIONS = gql`
-  query GetLocations {
-    locations {
+const getUser = gql`
+  query {
+    getUser(id: 1) {
       id
+      email
       name
-      description
-      photo
+      userType
     }
   }
 `;
 
 export default function Client() {
-  const { loading, error, data, refetch, networkStatus } =
-    useQuery(GET_LOCATIONS);
-
+  const { loading, error, data, refetch, networkStatus } = useQuery(getUser);
+  console.log(data);
   if (loading)
     return (
       <>
@@ -59,16 +50,12 @@ export default function Client() {
 
   return (
     <>
-      {data.locations.map(({ id, name, description, photo }: Location) => (
-        <div key={id}>
-          <h3>{name}</h3>
-          <img width="400" height="250" alt="location-reference" src={photo} />
-          <br />
-          <b>About this location:</b>
-          <p>{description}</p>
-          <br />
-        </div>
-      ))}
+      <div key={data.getUser.id}>
+        <h3>{data.getUser.name}</h3>
+        <p>{data.getUser.id}</p>
+        <p>{data.getUser.email}</p>
+        <p>{data.getUser.userType}</p>
+      </div>
     </>
   );
 }

@@ -28,7 +28,7 @@ export default function RootLayout({
             </h1>
             <ul className="list">
               <li>
-                <button className="menuBtn" onClick={() => pageRoute("/")}>
+                <button className="menuBtn" onClick={() => pageRoute("/main")}>
                   <Image src={home} alt="home" />
                   <p>Home</p>
                 </button>

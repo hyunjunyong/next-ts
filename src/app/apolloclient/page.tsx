@@ -8,19 +8,19 @@ import {
 } from "@apollo/client";
 import Client from "./client";
 const client = new ApolloClient({
-  uri: "https://flyby-router-demo.herokuapp.com/",
+  uri: "https://moonshot-user-service.fly.dev/graphql",
   cache: new InMemoryCache(),
 });
 
 client
   .query({
     query: gql`
-      query GetLocations {
-        locations {
+      query {
+        getUser(id: 1) {
           id
+          email
           name
-          description
-          photo
+          userType
         }
       }
     `,
