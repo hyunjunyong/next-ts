@@ -15,6 +15,7 @@ const getClient = () => {
     client = new ApolloClient({
       link: new HttpLink({
         uri: "https://moonshot-user-service.fly.dev/graphql",
+        // uri:"http://moonshot-api.hannah-log.site/graphql",
       }),
       cache: new InMemoryCache(),
     });
