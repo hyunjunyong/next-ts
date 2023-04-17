@@ -110,3 +110,9 @@ section .card {
   text-decoration: none;
   color: white;
 }
+.menuBtn {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+}

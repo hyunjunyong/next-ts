@@ -18,7 +18,7 @@ label {
 }
 
 input[type="text"],
-input[type="pw"],
+input[type="password"],
 input[type="name"] {
   background-color: #eee;
   border: none;
@@ -28,7 +28,7 @@ input[type="name"] {
   margin-bottom: 20px;
 }
 input[type="text"]:focus,
-input[type="pw"]:focus,
+input[type="password"]:focus,
 input[type="name"]:focus {
   outline: none;
   border-bottom: 1px solid black;

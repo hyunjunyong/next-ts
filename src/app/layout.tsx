@@ -1,5 +1,3 @@
-"use client";
-
 import "./globals.css";
 import Image from "next/image";
 import home from "./img/home.png";
@@ -7,17 +5,12 @@ import dashboard from "./img/dashboard.png";
 import chart from "./img/bar-chart.png";
 import kanban from "./img/kanban.png";
 import Settings from "./img/setting.png";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
-  const pageRoute = (path: string) => {
-    router.push(path);
-  };
   return (
     <html lang="en">
       <body>
@@ -28,40 +21,34 @@ export default function RootLayout({
             </h1>
             <ul className="list">
               <li>
-                <button className="menuBtn" onClick={() => pageRoute("/main")}>
+                <Link href="/menu" className="menuBtn">
                   <Image src={home} alt="home" />
                   <p>Home</p>
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  className="menuBtn"
-                  onClick={() => pageRoute("/editor")}
-                >
+                <Link href="/editor" className="menuBtn">
                   <Image src={dashboard} alt="dashboard" />
                   <p>editor</p>
-                </button>
+                </Link>
               </li>
               <li>
-                <button className="menuBtn" onClick={() => pageRoute("/chart")}>
+                <Link href="/chart" className="menuBtn">
                   <Image src={chart} alt="chart" />
                   <p>Chart</p>
-                </button>
+                </Link>
               </li>
               <li>
-                <button className="menuBtn" onClick={() => pageRoute("/coin")}>
+                <Link href="/coin" className="menuBtn">
                   <Image src={kanban} alt="Coin" />
                   <p>BitCoin</p>
-                </button>
+                </Link>
               </li>
               <li>
-                <button
-                  className="menuBtn"
-                  onClick={() => pageRoute("/apolloclient")}
-                >
+                <Link href="/apolloclient" className="menuBtn">
                   <Image src={Settings} alt="Settings" />
                   <p>apolloclient</p>
-                </button>
+                </Link>
               </li>
             </ul>
           </nav>
