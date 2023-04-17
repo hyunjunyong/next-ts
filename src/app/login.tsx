@@ -56,7 +56,7 @@ export default function Login() {
   return (
     <div className="login">
       <div className="login-bg">
-        <form className="login-form" action="/api/login/login" method="">
+        <form className="login-form" action="/api/login/login" method="POST">
           <h2>로그인</h2>
           <label htmlFor="email">Email</label>
           <input type="text" id="email" name="email" />
@@ -64,7 +64,9 @@ export default function Login() {
           <label htmlFor="pw">패스워드</label>
           <input type="pw" id="pw" name="pw" />
 
-          <button className="login-btn">로그인</button>
+          <button className="login-btn" type="submit">
+            로그인
+          </button>
         </form>
         <form className="register-form">
           <h2>회원가입</h2>
@@ -78,7 +80,9 @@ export default function Login() {
           <label htmlFor="pw">이름</label>
           <input type="text" id="name" name="name" />
 
-          <button className="register-btn">회원가입</button>
+          <button className="register-btn" type="submit">
+            회원가입
+          </button>
         </form>
       </div>
     </div>
