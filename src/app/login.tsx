@@ -56,7 +56,7 @@ export default function Login() {
   return (
     <div className="login">
       <div className="login-bg">
-        <form className="login-form">
+        <form className="login-form" action="/api/login/login" method="">
           <h2>로그인</h2>
           <label htmlFor="email">Email</label>
           <input type="text" id="email" name="email" />
