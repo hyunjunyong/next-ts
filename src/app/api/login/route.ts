@@ -1,7 +1,9 @@
 import { getClient } from "@/app/util/apollo";
 import { gql } from "@apollo/client";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
+import { redirect } from "next/navigation";
+
 type UserType = "ADMIN" | "GUEST";
 // 사용해야할 쿼리
 // mutation{
@@ -35,16 +37,21 @@ const login = gql`
     }
   }
 `;
+export async function POST(request: Request) {
+  const req = await request.formData();
+  const email = req.get("email");
+  const pw = req.get("pw");
 
-export async function GET(request: Request) {
+  console.log(req, email, pw);
+
   const client = getClient();
   const { data } = await client.mutate<login>({
     mutation: login,
-    variables: { email: "hjy4649@naver.com", password: "1234" },
+    variables: { email: `${email}`, password: `${pw}` },
   });
 
   const res = JSON.stringify(data);
   console.log(res);
-  // console.log(request);
-  return NextResponse.redirect(new URL("/main", request.url));
+  return NextResponse.json(res);
+  // redirect("/main");
 }

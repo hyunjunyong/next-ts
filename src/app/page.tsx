@@ -4,7 +4,7 @@ export default async function Home() {
   return (
     <div className="login">
       <div className="login-bg">
-        <form className="login-form" action="/api/login" method="GET">
+        <form className="login-form" action="/api/login" method="POST">
           <h2>로그인</h2>
           <label htmlFor="email">Email</label>
           <input type="text" name="email" placeholder="이메일을 입력해주세요" />
