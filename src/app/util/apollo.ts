@@ -5,7 +5,7 @@ export function getClient() {
   if (!client || typeof window === "undefined") {
     client = new ApolloClient({
       link: new HttpLink({
-        uri: "https://moonshot-user-service.fly.dev/graphql",
+        uri: "http://moonshot-api.hannah-log.site:3000/graphql",
       }),
       cache: new InMemoryCache(),
     });
