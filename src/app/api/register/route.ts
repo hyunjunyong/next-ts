@@ -5,35 +5,47 @@ import { NextResponse } from "next/server";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 type UserType = "ADMIN" | "GUEST";
-interface login {
-  userId: string;
-  jwtToken: string;
+// 사용해야할 쿼리
+interface signUp {
+  id: Number;
+  email: string;
+  name: string;
+  userType: UserType;
 }
+const signUpQuery = gql`
+  mutation signUp($email: String!, $password: String!, $name: String!) {
+    signup(
+      createUserRequest: {
+        email: $email
+        password: $password
+        name: $name
+        userType: "GUEST"
+      }
+    ) {
+      id
+      email
+      name
+      userType
+    }
+  }
+`;
 interface mutateError extends Error {
   message: string;
 }
 const client = getClient();
-const login = gql`
-  mutation Login($email: String!, $password: String!) {
-    login(loginUserRequest: { email: $email, password: $password }) {
-      userId
-      jwtToken
-    }
-  }
-`;
 
-function getUser() {}
 export async function POST(request: NextRequest) {
   const req = await request.formData();
   const email = req.get("email");
   const pw = req.get("pw");
+  const name = req.get("name");
   const requestUrl = request.nextUrl.clone().origin;
 
   let response = NextResponse.next();
   try {
-    const { data } = await client.mutate<login>({
-      mutation: login,
-      variables: { email: `${email}`, password: `${pw}` },
+    const { data } = await client.mutate<signUp>({
+      mutation: signUpQuery,
+      variables: { email: `${email}`, password: `${pw}`, name: `${name}` },
     });
     const res = JSON.stringify(data);
     console.log(res);
@@ -42,10 +54,8 @@ export async function POST(request: NextRequest) {
   } catch (error: unknown) {
     if (error instanceof ApolloError) {
       const { message } = error;
-      // cookie.set("error", message);
-      console.log(response);
-      response.cookies.set("error", message);
-      console.log(response.cookies.get("error"));
+
+      console.log(message);
       return await NextResponse.redirect(`${requestUrl}`);
       // return await NextResponse.redirect(`${errorAfterUrl}`);
     } else {

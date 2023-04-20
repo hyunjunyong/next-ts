@@ -1,6 +1,13 @@
 import "./login.css";
-
+// import { NextResponse } from "next/server";
 export default async function Home() {
+  // const response = NextResponse.next();
+  // console.log(response);
+  // if (response.cookies.get("error")) {
+  //   console.log(response);
+  //   alert(response.cookies.get("error"));
+  //   response.cookies.delete("error");
+  // }
   return (
     <div className="login">
       <div className="login-bg">
@@ -20,7 +27,7 @@ export default async function Home() {
             로그인
           </button>
         </form>
-        <form className="register-form">
+        <form className="register-form" action="/api/register" method="POST">
           <h2>회원가입</h2>
 
           <label htmlFor="email">Email</label>
@@ -29,7 +36,7 @@ export default async function Home() {
           <label htmlFor="pw">패스워드</label>
           <input type="password" name="pw" />
 
-          <label htmlFor="pw">이름</label>
+          <label htmlFor="name">이름</label>
           <input type="text" name="name" />
 
           <button className="register-btn" type="submit">
