@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
     const res = JSON.stringify(data);
     console.log(res);
 
-    return await NextResponse.redirect(`${requestUrl}/main`);
+    return await NextResponse.redirect(`${requestUrl}`);
   } catch (error: unknown) {
     if (error instanceof ApolloError) {
       const { message } = error;

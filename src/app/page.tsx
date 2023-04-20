@@ -1,13 +1,12 @@
 import "./login.css";
-// import { NextResponse } from "next/server";
-export default async function Home() {
-  // const response = NextResponse.next();
-  // console.log(response);
-  // if (response.cookies.get("error")) {
-  //   console.log(response);
-  //   alert(response.cookies.get("error"));
-  //   response.cookies.delete("error");
-  // }
+import LoginError from "./loginError";
+import { NextResponse } from "next/server";
+export default function Login() {
+  let response = NextResponse.next();
+  if (response.cookies.get("error")) {
+    <LoginError message={response.cookies.get("error")} />;
+  }
+
   return (
     <div className="login">
       <div className="login-bg">

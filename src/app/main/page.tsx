@@ -36,9 +36,7 @@ export default function Home() {
             <div className="card">
               코인뉴스라도 어디서 가져와야되나 ex :크립토허브 api
             </div>
-            <div className="card">
-              <Client />
-            </div>
+            <div className="card">{/* <Client /> */}</div>
             <div className="card">
               <Coin />
             </div>

@@ -21,7 +21,7 @@ export default function RootLayout({
             </h1>
             <ul className="list">
               <li>
-                <Link href="/menu" className="menuBtn">
+                <Link href="/main" className="menuBtn">
                   <Image src={home} alt="home" />
                   <p>Home</p>
                 </Link>
