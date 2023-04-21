@@ -1,12 +1,10 @@
 import "./login.css";
 import LoginError from "./loginError";
 import { NextResponse } from "next/server";
-export default function Login() {
-  let response = NextResponse.next();
-  if (response.cookies.get("error")) {
-    <LoginError message={response.cookies.get("error")} />;
-  }
-
+export default async function Login() {
+  const req = await fetch("http://localhostL3000/api/login");
+  const data = await req.json();
+  console.log(data);
   return (
     <div className="login">
       <div className="login-bg">

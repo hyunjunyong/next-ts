@@ -31,12 +31,12 @@ export async function POST(request: NextRequest) {
     });
     const res = JSON.stringify(data);
     console.log(res);
-    return await NextResponse.redirect(`${requestUrl}/main`);
+    return await NextResponse.json(`로그인에 성공하였습니다.`);
   } catch (error: unknown) {
     if (error instanceof ApolloError) {
       const { message } = error;
-      alert(`message`);
-      return await NextResponse.redirect(`${requestUrl}`);
+
+      return await NextResponse.json(message);
     }
   }
 }
