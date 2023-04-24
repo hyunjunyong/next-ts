@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function product() {
   const res = await fetch("http://localhost:3000/api/productList", {
@@ -6,16 +7,16 @@ export default async function product() {
   });
   const productList = await res.json();
   const getProducts = productList.getProducts;
-  console.log(productList);
+  console.log(getProducts[0].productImages);
   interface categoryType {
     id: number;
-    name: String;
+    name: string;
     createdAt: Date;
     updatedAt: Date;
   }
   interface imageType {
-    id: String;
-    imageUrl: String;
+    id: string;
+    imageUrl: string;
     isMain: Boolean;
   }
   interface product {
@@ -29,13 +30,18 @@ export default async function product() {
   return (
     <div>
       {getProducts.map((item: product) => (
-        <div key={item.id}>
+        <Link href={`product/${item.id}`} key={item.id}>
           <h2>{item.name}</h2>
           <p>{item.price}</p>
           <p>{item.description}</p>
           <p>{item.category.name}</p>
-          <Image src={item.productImages.imageUrl}></Image>
-        </div>
+          <Image
+            src={item.productImages[0].imageUrl}
+            alt={item.productImages[0].id}
+            width={100}
+            height={100}
+          ></Image>
+        </Link>
       ))}
     </div>
     // productList.map((item)=>{

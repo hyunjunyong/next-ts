@@ -5,13 +5,13 @@ import { NextResponse } from "next/server";
 
 interface categoryType {
   id: number;
-  name: String;
+  name: string;
   createdAt: Date;
   updatedAt: Date;
 }
 interface imageType {
-  id: String;
-  imageUrl: String;
+  id: string;
+  imageUrl: string;
   isMain: Boolean;
 }
 interface product {
