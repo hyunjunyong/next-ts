@@ -19,10 +19,13 @@ const login = gql`
 `;
 
 export async function POST(request: NextRequest) {
-  const req = await request.formData();
-  const email = req.get("email");
-  const pw = req.get("pw");
-  const requestUrl = request.nextUrl.clone().origin;
+  // console.log(request);
+  const req = await request.json();
+  console.log(req);
+  // const email = req.get("email");
+  // const pw = req.get("pw");
+  const email = req.email;
+  const pw = req.pw;
 
   try {
     const { data } = await client.mutate<login>({
@@ -35,7 +38,6 @@ export async function POST(request: NextRequest) {
   } catch (error: unknown) {
     if (error instanceof ApolloError) {
       const { message } = error;
-
       return await NextResponse.json(message);
     }
   }

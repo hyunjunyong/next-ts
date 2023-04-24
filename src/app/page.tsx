@@ -1,23 +1,51 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import "./login.css";
-import LoginError from "./loginError";
-import { NextResponse } from "next/server";
-export default async function Login() {
-  const req = await fetch("http://localhostL3000/api/login");
-  const data = await req.json();
-  console.log(data);
+import { useState } from "react";
+
+export default function Login() {
+  const router = useRouter();
+  const [email, setEmail] = useState<string>("");
+  const [pw, setPw] = useState<string>("");
+
+  const loginData = {
+    email: email,
+    pw: pw,
+  };
+  async function LoginForm(e) {
+    e.preventDefault();
+    const req = await fetch("http://localhost:3000/api/login", {
+      method: "POST",
+      body: JSON.stringify(loginData),
+    });
+    // console.log(req);
+    req.status === 200 ? router.push("/main") : alert(req.json());
+    // const data = await req.json();
+    // console.log(data);
+  }
+
   return (
     <div className="login">
       <div className="login-bg">
-        <form className="login-form" action="/api/login" method="POST">
+        <form className="login-form" onSubmit={LoginForm}>
           <h2>로그인</h2>
           <label htmlFor="email">Email</label>
-          <input type="text" name="email" placeholder="이메일을 입력해주세요" />
+          <input
+            type="text"
+            name="email"
+            placeholder="이메일을 입력해주세요"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
           <label htmlFor="pw">패스워드</label>
           <input
             type="password"
             name="pw"
             placeholder="비밀번호를 입력해주세요"
+            value={pw}
+            onChange={(e) => setPw(e.target.value)}
           />
 
           <button className="login-btn" type="submit">

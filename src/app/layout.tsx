@@ -45,9 +45,9 @@ export default function RootLayout({
                 </Link>
               </li>
               <li>
-                <Link href="/apolloclient" className="menuBtn">
+                <Link href="/product" className="menuBtn">
                   <Image src={Settings} alt="Settings" />
-                  <p>apolloclient</p>
+                  <p>product</p>
                 </Link>
               </li>
             </ul>
