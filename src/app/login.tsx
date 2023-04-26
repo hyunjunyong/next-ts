@@ -13,17 +13,20 @@ export default function Login() {
     email: email,
     pw: pw,
   };
-  async function LoginForm(e) {
+
+  const LoginForm = (e) => {
     e.preventDefault();
-    const req = await fetch("http://localhost:3000/api/login", {
+    fetch("/api/login", {
       method: "POST",
       body: JSON.stringify(loginData),
-    });
-    // console.log(req);
-    req.status === 200 ? router.push("/main") : alert(req.json());
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+
+    // req.status === 200 ? router.push("/main") : alert(req.json());
     // const data = await req.json();
     // console.log(data);
-  }
+  };
 
   return (
     <div className="login">
