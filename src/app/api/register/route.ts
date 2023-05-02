@@ -35,31 +35,24 @@ interface mutateError extends Error {
 const client = getClient();
 
 export async function POST(request: NextRequest) {
-  const req = await request.formData();
-  const email = req.get("email");
-  const pw = req.get("pw");
-  const name = req.get("name");
-  const requestUrl = request.nextUrl.clone().origin;
+  const { email, pw, name } = await request.json();
 
-  let response = NextResponse.next();
   try {
     const { data } = await client.mutate<signUp>({
       mutation: signUpQuery,
       variables: { email: `${email}`, password: `${pw}`, name: `${name}` },
     });
     const res = JSON.stringify(data);
+    // const hash = await bcrypt.hash(res.)
     console.log(res);
 
-    return await NextResponse.redirect(`${requestUrl}`);
+    return await NextResponse.json(`회원가입에 성공하였습니다.`);
   } catch (error: unknown) {
+    console.log(error);
     if (error instanceof ApolloError) {
       const { message } = error;
-
-      console.log(message);
-      return await NextResponse.redirect(`${requestUrl}`);
-      // return await NextResponse.redirect(`${errorAfterUrl}`);
-    } else {
-      return await NextResponse.redirect(`${requestUrl}`);
+      // console.log(message);
+      return await NextResponse.json(message);
     }
   }
 }
