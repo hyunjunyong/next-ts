@@ -4,6 +4,7 @@ import home from "./img/home.png";
 import dashboard from "./img/dashboard.png";
 import chart from "./img/bar-chart.png";
 import kanban from "./img/kanban.png";
+
 import Settings from "./img/setting.png";
 import Link from "next/link";
 export default function RootLayout({

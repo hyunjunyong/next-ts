@@ -1,9 +1,14 @@
+{
+  /* @ts-expect-error Async Server Component */
+}
+
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function product() {
   const res = await fetch("http://localhost:3000/api/productList", {
     method: "GET",
+    next: { revalidate: 10 },
   });
   const productList = await res.json();
   const getProducts = productList.getProducts;

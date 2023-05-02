@@ -51,7 +51,6 @@ export async function POST(request: NextRequest) {
     console.log(error);
     if (error instanceof ApolloError) {
       const { message } = error;
-      // console.log(message);
       return await NextResponse.json(message);
     }
   }
