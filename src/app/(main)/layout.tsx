@@ -52,7 +52,7 @@ export default function RootLayout({
               </li>
             </ul>
           </nav>
-          <div className="child">{children}</div>
+          <div className="mainChild">{children}</div>
         </div>
       </body>
     </html>
