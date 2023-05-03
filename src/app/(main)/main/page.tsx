@@ -3,7 +3,7 @@
   /* @ts-expect-error Async Server Component */
 }
 
-import "../globals.css";
+// import "../globals.css";
 import Link from "next/link";
 // import { useRouter } from "next/navigation";
 import Chart from "../chart/page";
@@ -13,19 +13,19 @@ import Product from "../product/page";
 export default function Home() {
   // const router = useRouter();
 
-  const onLogin = () => {
-    // router.push("/dashboard");
-  };
+  // const onLogin = () => {
+  //   router.push("/dashboard");
+  // };
 
   return (
     <>
-      <header>
+      {/* <header>
         <div>
-          {/* <button className="" onClick={() => onLogin()}>
+          <button className="" onClick={() => onLogin()}>
             login
-          </button> */}
+          </button>
         </div>
-      </header>
+      </header> */}
       <div className="bgGray">
         <section id="fstDiv">
           <div className="card">

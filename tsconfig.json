@@ -29,7 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/apolloclient/page.tsx"
+    "src/app/[main]/apolloclient/page.tsx"
   ],
   "exclude": ["node_modules"]
 }
