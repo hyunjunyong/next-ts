@@ -12,7 +12,7 @@ export default async function product() {
   });
   const productList = await res.json();
   const getProducts = productList.getProducts;
-  console.log(getProducts[0].productImages);
+
   interface categoryType {
     id: number;
     name: string;

@@ -1,5 +1,3 @@
-"use client";
-
 import Login from "./login";
 import Register from "./register";
 import "./login.css";

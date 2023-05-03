@@ -1,3 +1,5 @@
+"use client";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -18,7 +20,6 @@ export default function Login() {
       body: JSON.stringify(loginData),
     })
       .then((res) => {
-        console.log(res);
         router.push("/main");
       })
       .catch((err) => alert(err));

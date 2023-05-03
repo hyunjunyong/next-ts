@@ -36,7 +36,7 @@ const getUser = gql`
 
 export default function Client() {
   const { loading, error, data, refetch, networkStatus } = useQuery(getUser);
-  console.log(data);
+
   if (loading)
     return (
       <>

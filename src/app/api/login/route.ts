@@ -27,7 +27,6 @@ export async function POST(request: NextRequest) {
 
     const res = JSON.stringify(data);
     // const hash = await bcrypt.hash(res.)
-    console.log(res);
 
     return await NextResponse.json(`로그인에 성공하였습니다.`);
   } catch (error: unknown) {

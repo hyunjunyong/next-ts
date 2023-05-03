@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 
 export default function Login() {
@@ -18,7 +20,6 @@ export default function Login() {
       body: JSON.stringify(registerData),
     })
       .then((res) => {
-        console.log(res);
         alert("회원가입이 완료되었습니다. 로그인을 해주세요");
       })
       .catch((err) => alert(err));
