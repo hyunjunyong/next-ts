@@ -4,7 +4,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-
+export const metadata = {
+  title: "Next.js",
+};
 export default async function product() {
   const res = await fetch("http://localhost:3000/api/productList", {
     method: "GET",
@@ -30,7 +32,7 @@ export default async function product() {
     price: number;
     description: string;
     category: categoryType;
-    productImages: imageType;
+    productImages: imageType[];
   }
   return (
     <div>

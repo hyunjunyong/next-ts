@@ -1,5 +1,5 @@
 import "./globals.css";
-
+import ErrorPage from "./global-error";
 export default function RootLayout({
   children,
 }: {
