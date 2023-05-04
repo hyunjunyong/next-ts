@@ -1,7 +1,3 @@
-{
-  /* @ts-expect-error Async Server Component */
-}
-
 import Image from "next/image";
 import Link from "next/link";
 export const metadata = {
@@ -10,7 +6,7 @@ export const metadata = {
 export default async function product() {
   const res = await fetch("http://localhost:3000/api/productList", {
     method: "GET",
-    next: { revalidate: 10 },
+    next: { revalidate: 60 },
   });
   const productList = await res.json();
   const getProducts = productList.getProducts;
