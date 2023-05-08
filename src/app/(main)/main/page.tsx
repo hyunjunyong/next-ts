@@ -1,7 +1,4 @@
 // "use client";
-{
-  /* @ts-expect-error Async Server Component */
-}
 
 // import "../globals.css";
 import Link from "next/link";
