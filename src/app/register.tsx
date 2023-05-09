@@ -1,28 +1,36 @@
 "use client";
 
 import { useState } from "react";
+import { getClient } from "@/app/util/apollo";
+import { useMutation, ApolloError } from "@apollo/client";
+import { signUpMutation } from "@/app/util/query";
 
 export default function Login() {
+  const client = getClient();
   const [newEmail, setNewEmail] = useState<string>("");
   const [newPw, setNewPw] = useState<string>("");
   const [newName, setNewName] = useState<string>("");
 
-  const registerData = {
-    email: newEmail,
-    pw: newPw,
-    name: newName,
-  };
+  const [register, { data, error }] = useMutation(signUpMutation, { client });
 
-  const registerForm = (e: { preventDefault: () => void }) => {
+  const registerForm = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    fetch("/api/login", {
-      method: "POST",
-      body: JSON.stringify(registerData),
-    })
-      .then((res) => {
-        alert("회원가입이 완료되었습니다. 로그인을 해주세요");
-      })
-      .catch((err) => alert(err));
+    try {
+      const { data } = await register({
+        variables: {
+          email: newEmail,
+          password: newPw,
+          name: newName,
+        },
+      });
+      console.log(data);
+      alert("회원가입이 완료되었습니다. 로그인을 해주세요");
+    } catch (error) {
+      if (error instanceof ApolloError) {
+        const { message } = error;
+        alert(message);
+      }
+    }
   };
 
   return (
