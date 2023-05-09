@@ -2,28 +2,21 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { getClient } from "@/app/util/apollo";
+import { useMutation, ApolloError } from "@apollo/client";
+import { loginMutation } from "@/app/util/query";
 
 export default function Login() {
+  const client = getClient();
   const router = useRouter();
   const [email, setEmail] = useState<string>("");
   const [pw, setPw] = useState<string>("");
-
-  const loginData = {
-    email: email,
-    pw: pw,
-  };
-
-  const LoginForm = (e: { preventDefault: () => void }) => {
+  const [login, { data, error }] = useMutation(loginMutation, { client });
+  const LoginForm = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    fetch("/api/login", {
-      method: "POST",
-      body: JSON.stringify(loginData),
-    })
-      .then((res) => {
-        console.log(res);
-        router.push("/main");
-      })
-      .catch((err) => alert(err));
+
+    await login({ variables: { email, password: pw } });
+    console.log(data, error);
   };
 
   return (

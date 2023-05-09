@@ -1,15 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getClient } from "@/app/util/apollo";
+import { gql, ApolloError } from "@apollo/client";
+import { getProduct } from "@/app/util/query";
+
 export const metadata = {
   title: "Next.js",
 };
+
 export default async function product() {
-  const res = await fetch("http://localhost:3000/api/productList", {
-    method: "GET",
-    next: { revalidate: 60 },
-  });
-  const productList = await res.json();
-  const getProducts = productList.getProducts;
+  const client = getClient();
+  const { data } = await client.query({ query: getProduct });
 
   interface categoryType {
     id: number;
@@ -32,7 +33,7 @@ export default async function product() {
   }
   return (
     <div>
-      {getProducts.map((item: product) => (
+      {data.getProducts.map((item: product) => (
         <Link href={`product/${item.id}`} key={item.id}>
           <h2>{item.name}</h2>
           <p>{item.price}</p>
@@ -47,8 +48,5 @@ export default async function product() {
         </Link>
       ))}
     </div>
-    // productList.map((item)=>{
-
-    // })
   );
 }
