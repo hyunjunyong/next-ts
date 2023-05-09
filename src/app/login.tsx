@@ -14,9 +14,22 @@ export default function Login() {
   const [login, { data, error }] = useMutation(loginMutation, { client });
   const LoginForm = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
+    try {
+      const { data } = await login({
+        variables: {
+          email,
+          password: pw,
+        },
+      });
 
-    await login({ variables: { email, password: pw } });
-    console.log(data, error);
+      console.log("login success!", data);
+      router.push('/main')
+    } catch (error) {
+      if (error instanceof ApolloError) {
+        const { message } = error;
+        alert(message);
+      }
+    }
   };
 
   return (
