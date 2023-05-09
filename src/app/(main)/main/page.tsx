@@ -4,7 +4,7 @@
 import Link from "next/link";
 // import { useRouter } from "next/navigation";
 import Chart from "../chart/page";
-import Coin from "../coin/coin-price";
+import Coin from "../coin/page";
 import Editor from "../editor/page";
 import Product from "../product/page";
 export default function Home() {

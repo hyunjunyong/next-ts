@@ -39,12 +39,12 @@ export default async function product() {
           <p>{item.price}</p>
           <p>{item.description}</p>
           <p>{item.category.name}</p>
-          <Image
+          {/* <Image
             src={item.productImages[0].imageUrl}
             alt={item.productImages[0].id}
             width={100}
             height={100}
-          ></Image>
+          ></Image> */}
         </Link>
       ))}
     </div>

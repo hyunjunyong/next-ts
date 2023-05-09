@@ -12,50 +12,46 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <div className="main">
-          <nav className="sideBar">
-            <h1>
-              <Link href="/">Admin Page</Link>
-            </h1>
-            <ul className="list">
-              <li>
-                <Link href="/main" className="menuBtn">
-                  <Image src={home} alt="home" />
-                  <p>Home</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/editor" className="menuBtn">
-                  <Image src={dashboard} alt="dashboard" />
-                  <p>editor</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/chart" className="menuBtn">
-                  <Image src={chart} alt="chart" />
-                  <p>Chart</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/coin" className="menuBtn">
-                  <Image src={kanban} alt="Coin" />
-                  <p>BitCoin</p>
-                </Link>
-              </li>
-              <li>
-                <Link href="/product" className="menuBtn">
-                  <Image src={Settings} alt="Settings" />
-                  <p>product</p>
-                </Link>
-              </li>
-            </ul>
-          </nav>
+    <div className="main">
+      <nav className="sideBar">
+        <h1>
+          <Link href="/">Admin Page</Link>
+        </h1>
+        <ul className="list">
+          <li>
+            <Link href="/main" className="menuBtn">
+              <Image src={home} alt="home" />
+              <p>Home</p>
+            </Link>
+          </li>
+          <li>
+            <Link href="/editor" className="menuBtn">
+              <Image src={dashboard} alt="dashboard" />
+              <p>editor</p>
+            </Link>
+          </li>
+          <li>
+            <Link href="/chart" className="menuBtn">
+              <Image src={chart} alt="chart" />
+              <p>Chart</p>
+            </Link>
+          </li>
+          <li>
+            <Link href="/coin" className="menuBtn">
+              <Image src={kanban} alt="Coin" />
+              <p>BitCoin</p>
+            </Link>
+          </li>
+          <li>
+            <Link href="/product" className="menuBtn">
+              <Image src={Settings} alt="Settings" />
+              <p>product</p>
+            </Link>
+          </li>
+        </ul>
+      </nav>
 
-          <main className="mainChild">{children}</main>
-        </div>
-      </body>
-    </html>
+      <main className="mainChild">{children}</main>
+    </div>
   );
 }
