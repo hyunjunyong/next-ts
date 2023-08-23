@@ -1,127 +1,27 @@
-html,
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
 body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  background-color: #eee;
-}
-h1 {
-  margin: 0;
-}
-nav {
-  height: 100%;
-  background-color: rgb(71 85 105);
-  color: white;
-  width: 20%;
-}
-button {
-  border: 0;
-  background-color: transparent;
-  padding: 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-header {
-  height: 10%;
-}
-p {
-  padding: 0;
-  margin: 0;
-}
-a {
-  text-decoration: none;
-  color: black;
-}
-.main {
-  display: flex;
-  height: 100%;
-}
-.list img {
-  width: 20px;
-  height: 20px;
-  margin: 0;
-}
-.list li {
-  margin: 0 0 20px 20px;
-}
-
-.list li p {
-  margin-left: 12px;
-  font-size: 1.4rem;
-}
-
-.list button {
-  cursor: pointer;
-  color: white;
-  display: flex;
-  align-items: center;
-}
-.child {
-  width: 100%;
-  height: 100%;
-}
-.mainChild {
-  width: 80%;
-}
-.bgGray {
-  background-color: #e0e0e0;
-  height: 100%;
-}
-section {
-  margin-bottom: 10px;
-  padding: 10px 20px;
-}
-section .card {
-  border: 1px solid #d3d3d3;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  padding: 3px;
-}
-#fstDiv {
-  height: 30vh;
-}
-
-#fstDiv div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-#secDiv {
-  display: flex;
-  gap: 10px;
-  height: 50vh;
-}
-
-#secDiv .sec_Div {
-  width: calc(100% / 3 - 20px);
-}
-
-#secDiv .sec_Div_sec {
-  width: calc(100% / 3 * 2 - 20px);
-}
-
-#secDiv .sec_Div_sec .card {
-  overflow: auto;
-  margin-bottom: 10px;
-  height: 15vh;
-}
-
-.sideBar h1 {
-  padding: 10px;
-  font-size: 32px;
-}
-.sideBar h1 a {
-  text-decoration: none;
-  color: white;
-}
-.menuBtn {
-  text-decoration: none;
-  color: white;
-  display: flex;
-  align-items: center;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
